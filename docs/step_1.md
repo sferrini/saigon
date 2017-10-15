@@ -11,7 +11,7 @@ In iOS, drivers(kexts) are included within the kernelcache. Follow the steps to 
 
 -Download the file
 
-## Step (2) Get the kernel cache and decrypt it:
+## Step (2) Get the kernel cache and decompress it:
 -Change the extenstion of the downloaded file to .zip (.ipsw -> .zip)
 
 -Extract the .zip file then find the "kernelcache" file inside (e.g. kernelcache.release.n61)
@@ -41,11 +41,11 @@ Notice the offset (`000001b0`):
 ```
 `000001b0` -> `00 00 00 00 ff cf fa ed  fe` -> `000001b4` -> `0x1b4`
 
--Use `0x1b4` to decrypt the kernel with  `lzssdec`:
+-Use `0x1b4` to decompress the kernel with  `lzssdec`:
 
 `lzssdec -o 0x1b4 < path_to_your_kernel > path_to_your_kernel.dec`
 
-Now that we have the decrypted kernel, we can use `joker` to get the list of kexts available.
+Now that we have the decompressed kernel, we can use `joker` to get the list of kexts available.
 
 ## Step (3) Use joker to list and extract the kexts:
 
